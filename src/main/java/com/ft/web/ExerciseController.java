@@ -1,5 +1,6 @@
 package com.ft.web;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +37,9 @@ public class ExerciseController {
 	
 	@GetMapping("/")
 	public List<Exercise> getAllExercises() {
-		return exerciseRepo.findAll();
+		List<Exercise> exercises = exerciseRepo.findAll();
+		exercises.sort(Comparator.comparing(ex -> ex.getExerciseDate()));
+		return exercises;
 	}
 	
 	@GetMapping("/day-report/")
