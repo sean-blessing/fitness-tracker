@@ -18,7 +18,7 @@ public interface ExerciseRepo extends JpaRepository<Exercise, Integer>{
 			+ " group by u.email, WeekNumber, ExerciseDate;", nativeQuery = true)
 	List<ExerciseDayReport> findExerciseDayReport();
 	
-	@Query(value = " select Email, WeekNumber, count(distinct(exerciseDate)) as Count"
+	@Query(value = " select Email, WeekNumber, count(distinct(e.id)) as Count"
 			+ "   from exercise e"
 			+ "   join week w on w.id = e.WeekId"
 			+ "   join User u on u.id = e.UserId"
