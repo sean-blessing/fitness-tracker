@@ -25,7 +25,11 @@ public class UserController {
 	
 	@GetMapping("/")
 	public List<User> getAllUsers() {
-		return userRepo.findAll();
+		System.out.println("UserController.getAllUsers()");
+
+		List<User> users = userRepo.findAll();
+		System.out.println("got some users... "+ users.size() + " of 'em!");
+		return users;
 	}
 	
 	// getById  - "/api/users/{id}
