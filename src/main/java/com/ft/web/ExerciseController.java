@@ -30,10 +30,13 @@ import com.ft.model.Week;
 @RequestMapping("/api/exercises")
 public class ExerciseController {
 	
-	@Autowired
-	private ExerciseRepo exerciseRepo;
-	@Autowired
-	private WeekRepo weekRepo;
+	private final ExerciseRepo exerciseRepo;
+	private final WeekRepo weekRepo;
+
+	ExerciseController(ExerciseRepo exerciseRepo, WeekRepo weekRepo) {
+		this.exerciseRepo = exerciseRepo;
+		this.weekRepo = weekRepo;
+	}
 	
 	@GetMapping("/")
 	public List<Exercise> getAllExercises() {

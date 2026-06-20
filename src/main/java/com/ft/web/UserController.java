@@ -17,8 +17,11 @@ import com.ft.model.UserLogin;
 @RequestMapping("/api/users")
 public class UserController {
 	
-	@Autowired
-	private UserRepo userRepo;
+	private final UserRepo userRepo;
+
+	public UserController(UserRepo userRepo) {
+		this.userRepo = userRepo;
+	}
 	
 	@GetMapping("/")
 	public List<User> getAllUsers() {

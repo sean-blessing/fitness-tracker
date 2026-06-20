@@ -25,8 +25,11 @@ import com.ft.model.Activity;
 @RequestMapping("/api/activities")
 public class ActivityController {
 	
-	@Autowired
-	private ActivityRepo activityRepo;
+	private final ActivityRepo activityRepo;
+	
+	public ActivityController(ActivityRepo activityRepo) {
+		this.activityRepo = activityRepo;
+	}
 	
 	@GetMapping("/")
 	public List<Activity> getAllActivities() {

@@ -20,7 +20,7 @@ public interface ExerciseRepo extends JpaRepository<Exercise, Integer>{
 	
 	@Query(value = " select Email, WeekNumber, count(distinct(e.id)) as Count"
 			+ "   from exercise e"
-			+ "   join week w on w.id = e.WeekId"
+			+ "   right join week w on w.id = e.WeekId"
 			+ "   join User u on u.id = e.UserId"
 			+ "  group by Email, WeekNumber;", nativeQuery = true)
 	List<ExerciseWeekReport> findExerciseWeekReport();

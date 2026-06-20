@@ -27,8 +27,11 @@ import com.ft.model.Week;
 @RequestMapping("/api/weeks")
 public class WeekController {
 	
-	@Autowired
-	private WeekRepo weekRepo;
+	private final WeekRepo weekRepo;
+
+	WeekController(WeekRepo weekRepo) {
+		this.weekRepo = weekRepo;
+	}
 	
 	@GetMapping("/")
 	public List<Week> getAllWeeks() {
